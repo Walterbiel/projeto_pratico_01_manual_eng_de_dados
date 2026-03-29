@@ -47,7 +47,9 @@ jobs:
 
       - name: Instalar pacotes dbt (dbt deps)
         working-directory: 2_data_warehouse/dw_bootcamp
-        run: ../../1_local_setup/.venv/bin/dbt deps --profiles-dir .
+        run: |
+          rm -rf dbt_packages target
+          ../../1_local_setup/.venv/bin/dbt deps --profiles-dir .
 
       - name: Validar sintaxe dos modelos dbt (dbt parse)
         working-directory: 2_data_warehouse/dw_bootcamp
@@ -109,7 +111,9 @@ jobs:
 
       - name: Instalar pacotes dbt (dbt deps)
         working-directory: 2_data_warehouse/dw_bootcamp
-        run: ../../1_local_setup/.venv/bin/dbt deps --profiles-dir .
+        run: |
+          rm -rf dbt_packages target
+          ../../1_local_setup/.venv/bin/dbt deps --profiles-dir .
 
       - name: Testar conexão com o banco (dbt debug)
         working-directory: 2_data_warehouse/dw_bootcamp
